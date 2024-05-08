@@ -1,0 +1,47 @@
+<h1>{{pageName}}</h1>
+<h1>{{registerPage}}</h1>
+{{userName}}
+<div>
+    <input type="text" [(ngModel)]="userName" placeholder="Enter Username">
+</div>
+<div>
+    <input type="password" [(ngModel)]="password"  placeholder="Enter Password">
+</div>
+<div>
+    <input type="button" (click)="login_btn()" value="Login">
+</div>
+
+@for(name of nameList;track $index	){
+    <li>{{name}}</li>
+}
+
+
+@for(name of nameDetails;track $index	){
+    
+    <li>{{name.name}}--{{name.mobile}}--
+        @if(name.address == ''){
+            No address Found
+        }@else{
+            {{name.address}}
+        }        
+    </li>
+}
+<hr>
+
+@for(name of nameDetails;track $index	){    
+    <li [class]="name.address==''?'red':'blue'">{{name.name}}--{{name.mobile}}--</li>
+}
+
+@if(show){
+    <h1>show is true</h1>
+}@else{
+    <h1>it is hidden</h1>
+}
+
+<hr>
+<h1>User List</h1>
+@for(user of userlist;track $index){
+    <p>{{user.first_name}}--{{user.email}}</p>
+    <img src="{{user.avatar}}" alt="">
+    <hr>
+}
