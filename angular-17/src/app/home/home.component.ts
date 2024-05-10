@@ -1,11 +1,14 @@
-import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
- 
+import { CommonService } from '../common.service';
+import { SqrtPipe } from '../sqrt.pipe';
+import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
+import { NameFilterPipe } from '../name-filter.pipe';
+
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule,HttpClientModule],
+  imports: [FormsModule,SqrtPipe,UpperCasePipe,DatePipe,CurrencyPipe,NameFilterPipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -16,14 +19,23 @@ export class HomeComponent {
   password ='';
   show = false;
   userlist:any = [];
-  nameList = ['test','test2','test3'];
+  population = 10;
+  name = '';
+  pageNo = "1";
+  price = 10;
+  currentDate = new Date();
+  nameList = ['test','test2','test3','animal','abc','zoo','zebra','cat'];
   //constrctor injection
-  constructor(private http:HttpClient){
+  constructor(private common:CommonService){
+    this.getUser();
+  }
+  changPageNo(){
     this.getUser();
   }
   getUser(){
-    this.http.get("https://reqres.in/api/users?page=2").subscribe((res:any)=>{
-        this.userlist = res['data'];  
+    this.common.get("users?page="+this.pageNo).subscribe((res:any)=>{
+        this.userlist = res['data'];
+        this.common.printMessage(res);  
       }
     )
   }
@@ -43,13 +55,13 @@ export class HomeComponent {
         "email": this.userName,
         "password": this.password
       }
-      this.http.post("https://reqres.in/api/login",data).subscribe(
+      this.common.post("login",data).subscribe(
         (res:any)=>{
           //for success response
-          console.log(res);        
+         this.common.printMessage(res);
         },err=>{
           //for error response
-          console.log(err['error']);          
+          this.common.printMessage(err['error']);
         }
     )
     }

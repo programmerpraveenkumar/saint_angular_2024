@@ -1,6 +1,11 @@
 <h1>{{pageName}}</h1>
-<h1>{{registerPage}}</h1>
+tw
+<h1>{{registerPage | uppercase}}</h1>
 {{userName}}
+<h1>
+    current population is {{population}}.next 5 years {{population | sqrt}}
+</h1>
+
 <div>
     <input type="text" [(ngModel)]="userName" placeholder="Enter Username">
 </div>
@@ -10,12 +15,15 @@
 <div>
     <input type="button" (click)="login_btn()" value="Login">
 </div>
-
-@for(name of nameList;track $index	){
+<h2>{{currentDate | date : 'mediumTime'}}</h2>
+<h2>{{price | currency :'Cad'}}</h2>
+<hr>
+<input type="text" [(ngModel)]="name" placeholder="Ente to filter">
+@for(name of nameList |  nameFilter ;track $index	){
     <li>{{name}}</li>
 }
 
-
+<hr>
 @for(name of nameDetails;track $index	){
     
     <li>{{name.name}}--{{name.mobile}}--
@@ -37,11 +45,20 @@
 }@else{
     <h1>it is hidden</h1>
 }
+<hr>
 
 <hr>
 <h1>User List</h1>
+<select [(ngModel)]="pageNo"  (change)="changPageNo()">
+    <option value="1">Page -1</option>
+    <option value="2">Page -2</option>
+    <option value="3">Page -3</option>
+    <option value="4">Page -4</option>
+</select>
 @for(user of userlist;track $index){
     <p>{{user.first_name}}--{{user.email}}</p>
     <img src="{{user.avatar}}" alt="">
     <hr>
-}
+}@empty {
+  <h1>User list is empty</h1>
+  }
