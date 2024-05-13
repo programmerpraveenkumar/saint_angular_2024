@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class NameFilterPipe implements PipeTransform {
 
   transform(value: any, ...args:[]): any[] {
-    console.log("name filter",value);
+    console.log("name filter",value,args);
     
     let filterName = value.filter(
           (obj:String)=>obj.startsWith('a')

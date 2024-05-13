@@ -1,3 +1,4 @@
+<app-header currentPage = 'home'></app-header>
 <h1>{{pageName}}</h1>
 tw
 <h1>{{registerPage | uppercase}}</h1>
@@ -19,7 +20,7 @@ tw
 <h2>{{price | currency :'Cad'}}</h2>
 <hr>
 <input type="text" [(ngModel)]="name" placeholder="Ente to filter">
-@for(name of nameList |  nameFilter ;track $index	){
+@for(name of nameList | nameFilter  ;track $index	){
     <li>{{name}}</li>
 }
 

@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonService } from '../common.service';
 import { SqrtPipe } from '../sqrt.pipe';
 import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { NameFilterPipe } from '../name-filter.pipe';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule,SqrtPipe,UpperCasePipe,DatePipe,CurrencyPipe,NameFilterPipe],
+  imports: [FormsModule,SqrtPipe,UpperCasePipe,DatePipe,CurrencyPipe,NameFilterPipe,HeaderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -25,6 +26,8 @@ export class HomeComponent {
   price = 10;
   currentDate = new Date();
   nameList = ['test','test2','test3','animal','abc','zoo','zebra','cat'];
+  
+ 
   //constrctor injection
   constructor(private common:CommonService){
     this.getUser();
