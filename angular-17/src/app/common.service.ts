@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -15,12 +15,18 @@ export class CommonService {
   publishMessage(msg:any){
       this.bObj.next(msg);//publish message
   }
+  getToken(){
+   return ""+localStorage.getItem('token');
+  }
+  getHeader(){
+    return new HttpHeaders().set("token",this.getToken());
+  }
   get(endPoint:String){
-    return this.http.get(this.BASEURL+endPoint)
+    return this.http.get(this.BASEURL+endPoint,{headers:this.getHeader()})
   }
 
   post(endPoint:string,params:{}){
-    return this.http.post(this.BASEURL+endPoint,params)
+    return this.http.post(this.BASEURL+endPoint,params,{headers:this.getHeader()})
   }
   
 }

@@ -1,0 +1,8 @@
+<div class="modal" [ngClass]="showModal?' show':''">
+    <h1>Message</h1>
+    <p>{{modalMessage}}</p>
+    <div>
+        <button (click)="showModal=false">Ok</button>
+        <!-- <button>Cancel</button> -->
+    </div>    
+</div>

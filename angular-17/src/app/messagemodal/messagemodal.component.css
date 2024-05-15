@@ -1,0 +1,14 @@
+.modal{
+    display: none;
+    border: 1px solid #000;
+    width: 70%;
+    text-align: center;
+    padding: 10px;
+}
+.modal button{ 
+    margin: 5px;
+    padding: 5px;
+}
+.modal.show{
+    display: block;
+}
