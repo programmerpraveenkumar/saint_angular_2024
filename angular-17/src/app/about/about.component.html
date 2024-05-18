@@ -1,5 +1,5 @@
 <app-header currentPage="about"></app-header>
-
+<h1>{{pageName}}</h1>
 <input type="text" [(ngModel)]="name" placeholder="Enter Name">
 <input (click)="validate()" type="button" value="Click"/>
 <app-footer (toParent)="recvFromChild($event)"></app-footer>

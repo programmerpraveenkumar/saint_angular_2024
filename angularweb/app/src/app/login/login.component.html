@@ -1,0 +1,13 @@
+<div style="margin: 0 auto;width: 50%;">
+    <h1>Login form</h1>
+    <div>
+        <input type="text" [(ngModel)]="userName"  style="width: 80%; " placeholder="Enter UserName"/>
+
+    </div>
+    <div>
+        <input [(ngModel)]="password" style="width: 80%; margin: 10px 0"  type="password" placeholder="Enter Password"/>
+    </div>
+    <div>
+        <input style="width: 80%; padding: 10px;" (click)="login()" type="button" value="Login"/>
+    </div>
+</div>

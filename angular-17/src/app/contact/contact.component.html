@@ -1,2 +1,36 @@
 <app-header currentPage="contact"></app-header>
-<p>contact works!</p>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<!-- <form> -->
+    <div>
+      <label>
+        Name:
+        <input formControlName="name" placeholder="Your name">
+      </label>
+      <label class="error">Error:: Name in not valid </label>
+    </div>
+    <div>
+      <label>
+        Email:
+        <input formControlName="email" placeholder="Your email">
+      </label>
+      <label  class="error">Error:: Email in not valid </label>
+
+    </div>
+    <div>
+      <label>
+        Msg:
+        <input formControlName="message" placeholder="Your message">
+      </label>
+        <label  class="error">Error:: Message in not valid </label>
+      
+
+    </div>
+    <button type="submit">Send</button>
+  </form>
+  <!-- ngIf for angular <17 -->
+  @if(myForm.valid){
+    <h1>form is valid</h1>
+  }@else{
+    <h1>form is not valid</h1>
+  }

@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import {BASEURL} from './AppConstants';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
   public bObj = new BehaviorSubject<any>("");
-  BASEURL = 'https://reqres.in/api/';
-  constructor(private http:HttpClient) { }
+  // BASEURL = 'https://reqres.in/api/';
+  constructor(private http:HttpClient) { 
+    console.log(BASEURL);
+    
+  }
   printMessage(message:string){
     console.log(message);
   }
@@ -22,11 +27,11 @@ export class CommonService {
     return new HttpHeaders().set("token",this.getToken());
   }
   get(endPoint:String){
-    return this.http.get(this.BASEURL+endPoint,{headers:this.getHeader()})
+    return this.http.get(BASEURL+endPoint,{headers:this.getHeader()})
   }
 
   post(endPoint:string,params:{}){
-    return this.http.post(this.BASEURL+endPoint,params,{headers:this.getHeader()})
+    return this.http.post(BASEURL+endPoint,params,{headers:this.getHeader()})
   }
   
 }

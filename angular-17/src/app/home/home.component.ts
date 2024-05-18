@@ -5,7 +5,7 @@ import { SqrtPipe } from '../sqrt.pipe';
 import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { NameFilterPipe } from '../name-filter.pipe';
 import { HeaderComponent } from '../header/header.component';
-
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -30,6 +30,8 @@ export class HomeComponent {
  
   //constrctor injection
   constructor(private common:CommonService){
+    console.log("sample region ",environment.region);
+    
     this.getUser();
   }
   changPageNo(){
@@ -48,6 +50,7 @@ export class HomeComponent {
     {"name":"vdvbx","mobile":12312,'address':''}
   ]
   login_btn(){
+    
     if(this.userName == ''){
         alert("username shuld not be empty");
     }else if(this.password == ''){

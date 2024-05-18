@@ -5,6 +5,7 @@ import { CommonService } from '../common.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MessagemodalComponent } from '../messagemodal/messagemodal.component';
+import { pageName,BASEURL } from '../AppConstants';
 
 @Component({
   selector: 'app-about',
@@ -17,7 +18,10 @@ export class AboutComponent {
   name = '';
   modalMessage = ''
   showModal = false;
+  pageName = pageName;
   constructor(private commonService:CommonService){
+    // console.log(AppConstants.App_Name);
+     
     this.commonService.bObj.subscribe((res)=>{
       if(res != '')
         console.log(res);      
