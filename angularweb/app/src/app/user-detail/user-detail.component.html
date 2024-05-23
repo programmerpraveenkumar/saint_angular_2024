@@ -1,0 +1,16 @@
+<app-header></app-header>
+<div class="text-center">
+    @if(message != ''){
+        <h2>{{message}}</h2>
+    }
+    <h2>
+        {{userDetail?.first_name}} {{userDetail?.last_name}}
+    </h2>
+    <h3>
+        {{userDetail?.email}}
+    </h3>
+    
+    <!-- {{userDetail?.email}} -->
+    <img style="width:30%" src="{{userDetail?.avatar}}" alt="">
+    
+</div>

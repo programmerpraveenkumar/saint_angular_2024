@@ -138,11 +138,11 @@
 
             @for(user of userList; track $index){
                 <div class="col-lg-4 col-4">
-                    <!-- Start Single features -->
+                   <a href="user?user_id={{user.id}}">
                          <img style="height: 150px;width: 150px;;;" src="{{user.avatar}}" alt="">
                             <h3>{{user.first_name}}</h3>
                             <p>{{user.email}}.</p>
-                    <!-- End Single features -->
+                        </a>
                 </div>
             }            
         </div>
